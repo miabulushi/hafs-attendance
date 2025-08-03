@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل الحضور - مدرسة حفص بن راشد</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f5f5f5; }
+    form { margin-top: 50px; }
+    input, button { padding: 10px; margin: 10px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>تسجيل حضور الطلاب</h1>
+  <form id="attendanceForm">
+    <input type="text" id="studentName" placeholder="اسم الطالب" required />
+    <button type="submit">تسجيل الحضور</button>
+  </form>
+  <ul id="attendanceList"></ul>
+
+  <script>
+    const form = document.getElementById('attendanceForm');
+    const list = document.getElementById('attendanceList');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('studentName').value;
+      if (name) {
+        const li = document.createElement('li');
+        li.textContent = name + ' - حاضر ✅';
+        list.appendChild(li);
+        document.getElementById('studentName').value = '';
+      }
+    });
+  </script>
+</body>
+</html>
